@@ -4,13 +4,17 @@
 # to use it on your environment
 
 CFLAGS = -DNDEBUG -Ofast -funroll-all-loops -Wall
-LINKFLAGS = -s
+LINKFLAGS = $(LDFLAGS)
+
+LDFLAGS = -L/opt/homebrew/opt/openblas/lib -L/opt/homebrew/opt/lapack/lib -L/opt/homebrew/Cellar/gcc/14.1.0_2/lib/gcc/current
+CPPFLAGS = -I/opt/homebrew/opt/openblas/include -I/opt/homebrew/opt/lapack/include
+
 
 CC = gcc
 CXX = g++
 LIBS = -lgfortran
 LAPACKLIB = -llapack
-BLASLIB = -lf77blas -latlas
+BLASLIB = -lopenblas
 
 .SUFFIXES: .o .cc .c
 
